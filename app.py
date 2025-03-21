@@ -75,7 +75,7 @@ def generate_response(text: str) -> str:
         response = client.chat.completions.create(
             model="deepseek-chat",
             messages=[
-                {"role": "user", "content": 'Составь ответ на прикрепленный запрос госоргана, согласно законодательству РФ:' +text}
+                {"role": "user", "content": 'Составь ответ на прикрепленный запрос госоргана, согласно законодательству РФ, ответ старайся сделать кратким:' +text}
             ],
             stream=False
         )
@@ -102,7 +102,7 @@ def index():
             try:
                 file = request.files['file']
                 if file:
-                    filename = secure_filename(file.filename)
+                    filename = file.filename
                     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                     file.save(filepath)
                     text = extract_text_with_ocr(filepath)
