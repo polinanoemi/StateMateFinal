@@ -75,7 +75,7 @@ def generate_response(text: str) -> str:
         response = client.chat.completions.create(
             model="deepseek-chat",
             messages=[
-                {"role": "user", "content": text}
+                {"role": "user", "content": 'Составь ответ на прикрепленный запрос госоргана, согласно законодательству РФ:' +text}
             ],
             stream=False
         )
