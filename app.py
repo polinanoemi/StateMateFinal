@@ -44,7 +44,7 @@ def extract_text_with_ocr(file_path: str) -> str:
         if file_path.lower().endswith('.pdf'):
             return extract_text_from_pdf(file_path)
         img = Image.open(file_path)
-        text = pytesseract.image_to_string(img, lang='rus+eng')
+        text = pytesseract.image_to_string(img, lang='rus')
         text = re.sub(r'\s+', ' ', text).strip()
         return text
     except Exception as e:
@@ -61,7 +61,7 @@ def extract_text_from_pdf(file_path: str) -> str:
                 img_path = os.path.join(app.config["UPLOAD_FOLDER"], f"page_{page_num + 1}.png")
                 pix.save(img_path)
                 img = Image.open(img_path)
-                page_text = pytesseract.image_to_string(img, lang='rus+eng')
+                page_text = pytesseract.image_to_string(img, lang='rus')
                 text += page_text + "\n"
                 os.remove(img_path)
         return text
