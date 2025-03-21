@@ -121,8 +121,8 @@ def index():
             item2 = request.form.get('invisible_item2')
             item3 = request.form.get('invisible_item3')
 
-        return render_template("StateMateFinal2.html", invisible_item1=item1, invisible_item2=item2, invisible_item3=item3)
-    return render_template("StateMateFinal2.html", invisible_item1=' ', invisible_item2=' ', invisible_item3=' ')
+        return render_template("StateMateFinal.html", invisible_item1=item1, invisible_item2=item2, invisible_item3=item3)
+    return render_template("StateMateFinal.html", invisible_item1=' ', invisible_item2=' ', invisible_item3=' ')
 
 
 @app.route("/dashboard")
